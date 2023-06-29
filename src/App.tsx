@@ -1,8 +1,10 @@
+import React from "react";
+
 function App() {
 
-  return(
-    <h1>Hello World</h1>
-  )
+  return React.createElement('h1', {
+    className: 'header'
+  }, 'Hello React')
 }
 
 export default App;
