@@ -6,7 +6,7 @@ type CardProps = {
 };
 
 function Card({ children, cool }: CardProps) {
-  return <div className={`rating-card ${cool && "aqua"}`}>{children}</div>;
+  return <div className={`review-card ${cool && "aqua"}`}>{children}</div>;
 }
 
 export default Card;

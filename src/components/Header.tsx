@@ -13,7 +13,7 @@ function Header(props: HeaderType) {
   return (
     <header style={HeaderStyle}>
       <h1 className="header">
-        {title} - {version}
+        {title} - v.{version}
       </h1>
     </header>
   );

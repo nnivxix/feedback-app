@@ -13,7 +13,7 @@ body {
   color: blueviolet;
 }
 
-.rating-card{
+.review-card{
   background: #DDE6ED;
   color: #2B2730;
   padding: 1px 3px;
@@ -22,10 +22,10 @@ body {
   position: relative;
   /* text-align: center; */
 }
-.rating-card:hover{
+.review-card:hover{
   background: #E5E5CB;
 }
-.rating-card p {
+.review-card p {
   font-size: 24px;
 }
 .aqua {

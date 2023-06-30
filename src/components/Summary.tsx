@@ -1,8 +1,8 @@
 import { FaStar } from "react-icons/fa";
-import { Rating } from "../types/schema";
+import { Review } from "../types/schema";
 
 interface SummaryProps {
-  reviews: Rating[];
+  reviews: Review[];
 }
 
 function Summary({ reviews }: SummaryProps) {
@@ -20,7 +20,7 @@ function Summary({ reviews }: SummaryProps) {
         <span>
           <FaStar />
         </span>{" "}
-        {isNaN(average) ? 0 : average.toFixed(1)}
+        {isNaN(average) ? 0 : average.toFixed(1)}/5
       </p>
     </div>
   );
