@@ -1,13 +1,20 @@
 import { Rating } from "../types/schema";
+import star from "../assets/star.svg";
+import Card from "../shared/Card";
 
 function RatingCard(props: Rating) {
-  const { rating, text, id } = props;
+  const { rating, text } = props;
 
   return (
-    <div key={id} className="rating-card">
-      <h1>{rating}</h1>
+    <Card cool={false}>
+      <h1>
+        <span>
+          <img width={32} src={star} alt="rating star" />
+        </span>
+        {" " + rating}
+      </h1>
       <p>{text}</p>
-    </div>
+    </Card>
   );
 }
 

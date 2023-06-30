@@ -18,6 +18,7 @@ body {
   color: #2B2730;
   padding: 1px 3px;
   margin: 4px 0px;
+  cursor: pointer;
   /* text-align: center; */
 }
 .rating-card:hover{
@@ -25,4 +26,7 @@ body {
 }
 .rating-card p {
   font-size: 24px;
+}
+.aqua {
+  background-color: aquamarine;
 }

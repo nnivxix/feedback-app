@@ -10,7 +10,7 @@ function RatingList() {
   return (
     <div>
       {rating.map((r: { id: number; text: string; rating: number }) => (
-        <RatingCard id={r.id} text={r.text} rating={r.rating} />
+        <RatingCard key={r.id} id={r.id} text={r.text} rating={r.rating} />
       ))}
     </div>
   );
