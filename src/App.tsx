@@ -1,5 +1,6 @@
 import { useState } from "react";
 import dataRatings from "./data/ratings";
+import martabak from "./assets/product.jpg";
 import Header from "./components/Header";
 import RatingList from "./components/RatingList";
 import Summary from "./components/Summary";
@@ -14,6 +15,7 @@ function App() {
   return (
     <main>
       <Header title="Feedback App" version={1.2} />
+      <img className="foto-product" src={martabak} alt="martabak" />
       <Summary reviews={rating} />
       <RatingList rating={rating} handleDelete={deleteRating} />
     </main>
