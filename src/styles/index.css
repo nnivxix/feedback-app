@@ -31,3 +31,8 @@ body {
 .aqua {
   background-color: aquamarine;
 }
+
+.summary{
+  display: flex;
+  justify-content: space-between;
+}

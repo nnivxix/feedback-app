@@ -2,6 +2,7 @@ import { useState } from "react";
 import dataRatings from "./data/ratings";
 import Header from "./components/Header";
 import RatingList from "./components/RatingList";
+import Summary from "./components/Summary";
 
 function App() {
   const [rating, setRating] = useState(dataRatings);
@@ -13,6 +14,7 @@ function App() {
   return (
     <main>
       <Header title="Feedback App" version={1.2} />
+      <Summary reviews={rating} />
       <RatingList rating={rating} handleDelete={deleteRating} />
     </main>
   );
