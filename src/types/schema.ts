@@ -4,6 +4,7 @@ export interface HeaderType {
 }
 export interface Rating {
   id: number;
-  rating: number,
-  text: string
+  rating: number;
+  text: string;
+  deleteItem(id: number): never;
 }
