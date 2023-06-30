@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import RatingCard from "./components/RatingCard";
+import RatingList from "./components/RatingList";
 
 function App() {
   return (
     <main>
       <Header title="Feedback App" version={1.2} />
-      <RatingCard />
+      <RatingList />
     </main>
   );
 }

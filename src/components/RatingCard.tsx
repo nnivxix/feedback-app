@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { Rating } from "../types/schema";
 
-function RatingCard() {
-  const [rating, setRating] = useState(8);
-  const [review, setReview] = useState("Nice");
+function RatingCard(props: Rating) {
+  const { rating, text, id } = props;
 
   return (
-    <div className="rating-card">
+    <div key={id} className="rating-card">
       <h1>{rating}</h1>
-      <p>{review}</p>
+      <p>{text}</p>
     </div>
   );
 }

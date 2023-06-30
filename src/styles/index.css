@@ -18,7 +18,7 @@ body {
   color: #2B2730;
   padding: 1px 3px;
   margin: 4px 0px;
-  text-align: center;
+  /* text-align: center; */
 }
 .rating-card:hover{
   background: #E5E5CB;
