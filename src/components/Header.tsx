@@ -6,6 +6,8 @@ function Header(props: HeaderType) {
   const HeaderStyle: CSSProperties = {
     textAlign: "center",
     color: "#BE5A83",
+    padding: "2px 0px",
+    background: "#0E2954",
   };
 
   return (
