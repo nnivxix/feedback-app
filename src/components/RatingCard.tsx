@@ -1,16 +1,14 @@
 import { FaTrash, FaStar } from "react-icons/fa";
-import Card from "../shared/Card";
-// import { Rating } from "../types/schema";
+import Card from "./shared/Card";
+import { Rating } from "../types/schema";
 
 interface RatingCardProps {
-  id: number;
-  rating: number;
-  text: string;
+  Rating: Rating;
   deleteItem: (id: number) => void;
 }
-function RatingCard({ id, rating, text, deleteItem }: RatingCardProps) {
+function RatingCard({ Rating, deleteItem }: RatingCardProps) {
   return (
-    <Card cool={false}>
+    <Card cool={true}>
       <div
         style={{
           display: "flex",
@@ -23,13 +21,13 @@ function RatingCard({ id, rating, text, deleteItem }: RatingCardProps) {
           <span>
             <FaStar color="orange" />
           </span>
-          {" " + rating}
+          {" " + Rating.rating}
         </h1>
-        <button onClick={() => deleteItem(id)}>
+        <button onClick={() => deleteItem(Rating.id)}>
           <FaTrash />
         </button>
       </div>
-      <p>{text}</p>
+      <p>{Rating.text}</p>
     </Card>
   );
 }

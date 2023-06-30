@@ -13,13 +13,7 @@ function RatingList({ rating, handleDelete }: RatingListProps) {
   return (
     <div>
       {rating.map((r: Rating) => (
-        <RatingCard
-          key={r.id}
-          rating={r.rating}
-          text={r.text}
-          id={r.id}
-          deleteItem={handleDelete}
-        />
+        <RatingCard key={r.id} Rating={r} deleteItem={handleDelete} />
       ))}
     </div>
   );
