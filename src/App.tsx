@@ -1,10 +1,10 @@
 import { useState } from "react";
-import ratings from "./data/ratings";
+import dataRatings from "./data/ratings";
 import Header from "./components/Header";
 import RatingList from "./components/RatingList";
 
 function App() {
-  const [rating, setRating] = useState(ratings);
+  const [rating, setRating] = useState(dataRatings);
   const deleteRating = (id: number) => {
     // if (window.confirm("Are you sure you want to delete?")) {
     // }

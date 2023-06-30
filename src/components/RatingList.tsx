@@ -1,9 +1,13 @@
-import { Rating } from "../types/schema";
 import RatingCard from "./RatingCard";
+import { Rating } from "../types/schema";
 
-function RatingList({ rating, handleDelete }) {
-  // const { id, text, rating, deleteItem } = props;
-  if (!(rating as Rating[]).length) {
+interface RatingListProps {
+  rating: Rating[];
+  handleDelete: (id: number) => void;
+}
+
+function RatingList({ rating, handleDelete }: RatingListProps) {
+  if (!rating.length) {
     return <p style={{ textAlign: "center" }}>No rating yet!</p>;
   }
   return (

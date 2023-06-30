@@ -1,10 +1,14 @@
 import { FaTrash, FaStar } from "react-icons/fa";
 import Card from "../shared/Card";
-import { Rating } from "../types/schema";
+// import { Rating } from "../types/schema";
 
-function RatingCard(props: Rating) {
-  const { id, text, rating, deleteItem } = props;
-  // console.log(rating);
+interface RatingCardProps {
+  id: number;
+  rating: number;
+  text: string;
+  deleteItem: (id: number) => void;
+}
+function RatingCard({ id, rating, text, deleteItem }: RatingCardProps) {
   return (
     <Card cool={false}>
       <div

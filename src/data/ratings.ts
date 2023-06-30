@@ -1,4 +1,4 @@
-const ratings = [
+const dataRatings = [
   {
     "id": 1,
     "rating": 4,
@@ -31,4 +31,4 @@ const ratings = [
   }
 ]
 
-export default ratings;
+export default dataRatings;
