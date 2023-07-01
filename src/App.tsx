@@ -4,6 +4,7 @@ import martabak from "./assets/product.jpg";
 import Header from "./components/Header";
 import ReviewList from "./components/ReviewList";
 import Summary from "./components/Summary";
+import ReviewForm from "./components/ReviewForm";
 
 function App() {
   const [reviews, setReview] = useState(dataReviews);
@@ -14,6 +15,7 @@ function App() {
     <main>
       <Header title="Feedback App" version={1.2} />
       <img className="foto-product" src={martabak} alt="martabak" />
+      <ReviewForm product="Spesial Martabak Telor" />
       <Summary reviews={reviews} />
       <ReviewList reviews={reviews} handleDelete={deleteReview} />
     </main>

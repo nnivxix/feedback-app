@@ -42,3 +42,27 @@ body {
   height: 25vh;
   object-fit: cover;
 }
+
+.wrap-form{
+  display: flex;
+  flex-direction: column;
+}
+.wrap-form label {
+  font-size: 18px;
+  padding: 3px 0;
+}
+.wrap-form textarea {
+  font-size: 18px;
+  padding: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.wrap-form select {
+  font-size: 18px;
+  padding: 5px;
+}
+.form-container button {
+  padding: 6px;
+  margin: 10px 0;
+  font-size: 18px;
+
+}
