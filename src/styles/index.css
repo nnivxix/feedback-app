@@ -60,9 +60,15 @@ body {
   font-size: 18px;
   padding: 5px;
 }
-.form-container button {
-  padding: 6px;
+.btn {
+  padding: 10px;
   margin: 10px 0;
   font-size: 18px;
+}
 
+.btn-primary {
+  background-color: blueviolet ;
+  border: 0;
+  color: white;
+  border-radius: 5px;
 }

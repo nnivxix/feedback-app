@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./shared/Button";
 
 function ReviewForm({ product }: { product: string }) {
   const [review, setReview] = useState("");
@@ -33,7 +34,7 @@ function ReviewForm({ product }: { product: string }) {
             </option>
           </select>
         </div>
-        <button>Submit</button>
+        <Button type="button">Submit</Button>
       </form>
     </div>
   );
