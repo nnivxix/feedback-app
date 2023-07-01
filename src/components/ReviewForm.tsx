@@ -3,9 +3,22 @@ import Button from "./shared/Button";
 
 function ReviewForm({ product }: { product: string }) {
   const [review, setReview] = useState("");
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleTextChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
+    if (review === "") {
+      setBtnDisabled(true);
+      setErrorMessage("");
+    } else if (review !== "" && review.trim().length <= 10) {
+      setErrorMessage("you have to enter at least 10 characters");
+      setBtnDisabled(true);
+    } else {
+      setErrorMessage("");
+      setBtnDisabled(false);
+    }
     setReview(e.target.value);
   };
 
@@ -34,8 +47,12 @@ function ReviewForm({ product }: { product: string }) {
             </option>
           </select>
         </div>
-        <Button type="button">Submit</Button>
+        <Button type="button" isDisabled={btnDisabled}>
+          Submit
+        </Button>
       </form>
+
+      {errorMessage && <div className="error-message">{errorMessage} </div>}
     </div>
   );
 }

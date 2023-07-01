@@ -72,3 +72,7 @@ body {
   color: white;
   border-radius: 5px;
 }
+
+.error-message {
+  color: rgb(217, 51, 51);
+}
