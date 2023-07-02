@@ -66,7 +66,11 @@ body {
   font-size: 18px;
   cursor: pointer;
 }
-
+.btn:disabled {
+  background-color: #cccccc;
+  color: #333;
+  cursor: auto;
+}
 .btn-primary {
   background-color: blueviolet ;
   border: 0;

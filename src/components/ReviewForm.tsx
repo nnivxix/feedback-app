@@ -39,6 +39,8 @@ function ReviewForm({ product, id, handleAdd }: ReviewFormProps) {
         rating,
       };
       handleAdd(newReview);
+      setReview("");
+      setRating(5);
     }
   };
 
@@ -54,6 +56,7 @@ function ReviewForm({ product, id, handleAdd }: ReviewFormProps) {
             name="review"
             onChange={handleTextChange}
             id="review"
+            value={review}
           ></textarea>
         </div>
         <Button type="submit" isDisabled={btnDisabled}>
