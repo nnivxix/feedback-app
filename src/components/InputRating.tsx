@@ -8,7 +8,7 @@ function FormRating({ select }: FormRatingProps) {
   const [selected, setSelected] = useState(5);
   const handleChange = (e) => {
     setSelected(+e.currentTarget.value);
-    select(selected);
+    select(+e.currentTarget.value);
   };
 
   return (

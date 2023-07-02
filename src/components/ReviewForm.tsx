@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Button from "./shared/Button";
 import FormRating from "./InputRating";
 import { Review } from "../types/schema";
-function ReviewForm({
-  product,
-  reviews,
-}: {
+
+interface ReviewFormProps {
   product: string;
-  reviews: Review;
-}) {
+  id: number;
+  handleAdd: (review: Review) => void;
+}
+function ReviewForm({ product, id, handleAdd }: ReviewFormProps) {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -17,10 +17,10 @@ function ReviewForm({
   const handleTextChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
-    if (reviews.text === "") {
+    if (review === "") {
       setBtnDisabled(true);
       setErrorMessage("");
-    } else if (reviews.text !== "" && reviews.text.trim().length <= 10) {
+    } else if (review !== "" && review.trim().length <= 10) {
       setErrorMessage("you have to enter at least 10 characters");
       setBtnDisabled(true);
     } else {
@@ -32,6 +32,14 @@ function ReviewForm({
 
   const submitForm = (e) => {
     e.preventDefault();
+    if (review.trim().length > 10) {
+      const newReview = {
+        id: id,
+        text: review,
+        rating,
+      };
+      handleAdd(newReview);
+    }
   };
 
   return (
