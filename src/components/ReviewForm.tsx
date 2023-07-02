@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Button from "./shared/Button";
-import FormRating from "./FormRating";
-
-function ReviewForm({ product }: { product: string }) {
+import FormRating from "./InputRating";
+import { Review } from "../types/schema";
+function ReviewForm({
+  product,
+  reviews,
+}: {
+  product: string;
+  reviews: Review;
+}) {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -11,10 +17,10 @@ function ReviewForm({ product }: { product: string }) {
   const handleTextChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
-    if (review === "") {
+    if (reviews.text === "") {
       setBtnDisabled(true);
       setErrorMessage("");
-    } else if (review !== "" && review.trim().length <= 10) {
+    } else if (reviews.text !== "" && reviews.text.trim().length <= 10) {
       setErrorMessage("you have to enter at least 10 characters");
       setBtnDisabled(true);
     } else {
@@ -23,23 +29,17 @@ function ReviewForm({ product }: { product: string }) {
     }
     setReview(e.target.value);
   };
-  const selectRating = (e) => {
-    setRating(e.target.value);
-    // console.log(rating);
-  };
 
-  // console.log(rating);
+  const submitForm = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div>
       <h1>How about your experience with the {product}</h1>
-      <form className="form-container">
+      <form className="form-container" onSubmit={submitForm}>
         <p>Please rate our restaurant</p>
-        <div className="container-rating">
-          {Array.from(Array(5).keys()).map((id) => (
-            <FormRating key={id} id={id} handleChange={selectRating} />
-          ))}
-        </div>
+        <FormRating select={(rating) => setRating(rating)} />
         <div className="wrap-form">
           <label htmlFor="review">Review</label>
           <textarea
@@ -48,7 +48,7 @@ function ReviewForm({ product }: { product: string }) {
             id="review"
           ></textarea>
         </div>
-        <Button type="button" isDisabled={btnDisabled}>
+        <Button type="submit" isDisabled={btnDisabled}>
           Submit
         </Button>
       </form>

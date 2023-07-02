@@ -15,7 +15,7 @@ function App() {
     <main>
       <Header title="Feedback App" version={1.2} />
       <img className="foto-product" src={martabak} alt="martabak" />
-      <ReviewForm product="Spesial Martabak Telor" />
+      <ReviewForm reviews={reviews} product="Spesial Martabak Telor" />
       <Summary reviews={reviews} />
       <ReviewList reviews={reviews} handleDelete={deleteReview} />
     </main>
