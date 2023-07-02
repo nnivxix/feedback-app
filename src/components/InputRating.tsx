@@ -6,7 +6,7 @@ interface FormRatingProps {
 
 function FormRating({ select }: FormRatingProps) {
   const [selected, setSelected] = useState(5);
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelected(+e.currentTarget.value);
     select(+e.currentTarget.value);
   };

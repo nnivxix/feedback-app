@@ -30,7 +30,7 @@ function ReviewForm({ product, id, handleAdd }: ReviewFormProps) {
     setReview(e.target.value);
   };
 
-  const submitForm = (e) => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (review.trim().length > 10) {
       const newReview = {
