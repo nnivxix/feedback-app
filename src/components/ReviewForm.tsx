@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Button from "./shared/Button";
+import FormRating from "./FormRating";
 
 function ReviewForm({ product }: { product: string }) {
   const [review, setReview] = useState("");
+  const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -21,11 +23,23 @@ function ReviewForm({ product }: { product: string }) {
     }
     setReview(e.target.value);
   };
+  const selectRating = (e) => {
+    setRating(e.target.value);
+    // console.log(rating);
+  };
+
+  // console.log(rating);
 
   return (
     <div>
       <h1>How about your experience with the {product}</h1>
       <form className="form-container">
+        <p>Please rate our restaurant</p>
+        <div className="container-rating">
+          {Array.from(Array(5).keys()).map((id) => (
+            <FormRating key={id} id={id} handleChange={selectRating} />
+          ))}
+        </div>
         <div className="wrap-form">
           <label htmlFor="review">Review</label>
           <textarea
@@ -33,19 +47,6 @@ function ReviewForm({ product }: { product: string }) {
             onChange={handleTextChange}
             id="review"
           ></textarea>
-        </div>
-        <div className="wrap-form">
-          <label htmlFor="rate">Rate</label>
-          <select id="rate">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="3">4</option>
-            <option value="4">5</option>
-            <option value="5" selected>
-              5
-            </option>
-          </select>
         </div>
         <Button type="button" isDisabled={btnDisabled}>
           Submit

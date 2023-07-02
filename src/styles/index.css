@@ -76,3 +76,37 @@ body {
 .error-message {
   color: rgb(217, 51, 51);
 }
+
+.form-container p {
+  text-align: center;
+  font-size: 18px;
+}
+.container-rating {
+  display: flex;
+  justify-content: center;
+}
+.input-radio {
+  /* display: inline; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+[type='radio'] {
+  opacity: 0;
+  position: absolute;
+}
+[type='radio'] ~ label {
+  border-radius: 50%;
+  padding: 20px;
+  height: auto;
+  width: 20px;
+  background-color: blueviolet;
+  margin: 3px;
+  color: #fff;
+  text-align: center;
+}
+[type='radio']:checked ~ label {
+  background-color: rgb(97, 13, 176);
+  color: #fff;
+}
