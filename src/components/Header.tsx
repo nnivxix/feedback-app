@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 import { HeaderType } from "../types/schema";
-
+import NavigationLink from "./NavigationLink";
 function Header(props: HeaderType) {
   const { title, version } = props;
   const HeaderStyle: CSSProperties = {
@@ -15,6 +15,7 @@ function Header(props: HeaderType) {
       <h1 className="header">
         {title} - v.{version}
       </h1>
+      <NavigationLink />
     </header>
   );
 }

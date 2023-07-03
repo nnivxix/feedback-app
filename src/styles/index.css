@@ -130,3 +130,25 @@ body {
   z-index: 10;
   color: rgb(255, 0, 157);
 }
+.nav-link {
+  display: flex;
+  justify-content: center;
+}
+.ul-link {
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+  padding-left: 0;
+}
+.ul-link li {
+  list-style: none;
+  color: wheat;
+}
+.ul-link li a {
+  color: wheat;
+  text-decoration: none;
+}
+
+.ul-link li a.active {
+  text-decoration: underline;
+}
