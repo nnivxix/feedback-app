@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { FaQuestion } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import martabak from "../assets/product.jpg";
 import ReviewList from "../components/ReviewList";
 import Summary from "../components/Summary";
@@ -17,7 +18,11 @@ function HomePage() {
     setReview([newReview, ...reviews]);
   };
   return (
-    <div>
+    <div
+      style={{
+        position: "relative",
+      }}
+    >
       <img className="foto-product" src={martabak} alt="martabak" />
       <ReviewForm
         id={reviews.length + 1}
@@ -26,6 +31,9 @@ function HomePage() {
       />
       <Summary reviews={reviews} />
       <ReviewList reviews={reviews} handleDelete={deleteReview} />
+      <Link to={"/about"} className="about-link">
+        <FaQuestion size={20} />
+      </Link>
     </div>
   );
 }
