@@ -1,9 +1,14 @@
-import { Routes, Route, NavLink } from "react-router-dom";
-
+import { Routes, Route, NavLink, Navigate } from "react-router-dom";
+import { useState } from "react";
 function PostPage() {
+  const [status] = useState(200);
+
+  if (status === 300) {
+    Navigate({ to: "/" });
+  }
   return (
     <div>
-      <h1>Post</h1>
+      <h1>Post {status}</h1>
       <p>
         Detail page <code>/show</code>{" "}
         <NavLink to="/post/show">show post</NavLink>
