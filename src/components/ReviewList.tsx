@@ -4,12 +4,8 @@ import ReviewCard from "./ReviewCard";
 import { Review } from "../types/schema";
 import ReviewContext from "../context/ReviewContext";
 
-interface ReviewListProps {
-  handleDelete: (id: number) => void;
-}
-
-function ReviewList({ handleDelete }: ReviewListProps) {
-  const reviews = useContext(ReviewContext);
+function ReviewList() {
+  const { reviews, deleteReview } = useContext(ReviewContext);
   if (!reviews.length) {
     return <p style={{ textAlign: "center" }}>No rating yet!</p>;
   }
@@ -32,7 +28,7 @@ function ReviewList({ handleDelete }: ReviewListProps) {
             <ReviewCard
               key={review.id}
               Review={review}
-              deleteReview={handleDelete}
+              deleteReview={deleteReview}
             />
           </motion.div>
         ))}

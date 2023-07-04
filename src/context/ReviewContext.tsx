@@ -2,12 +2,30 @@ import { createContext, useState, ReactNode } from "react";
 import { Review } from "../types/schema";
 import dataReviews from "../data/reviews";
 
-const ReviewContext = createContext<Review[]>([]);
+interface ReviewContextProps {
+  reviews: Review[];
+  deleteReview: (id: number) => void;
+  addReview: (review: Review) => void;
+}
+
+const ReviewContext = createContext<ReviewContextProps>({
+  reviews: [],
+  deleteReview: () => null,
+  addReview: () => null,
+});
 
 export const ReviewProvider = ({ children }: { children: ReactNode }) => {
-  const [reviews] = useState(dataReviews);
+  const [reviews, setReview] = useState<Review[]>(dataReviews);
+  const deleteReview = (id: number) => {
+    setReview(reviews.filter((review) => review.id !== id));
+  };
+  const addReview = (review: Review) => {
+    setReview([review, ...reviews]);
+  };
   return (
-    <ReviewContext.Provider value={reviews}>{children}</ReviewContext.Provider>
+    <ReviewContext.Provider value={{ reviews, deleteReview, addReview }}>
+      {children}
+    </ReviewContext.Provider>
   );
 };
 

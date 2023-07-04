@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 import ReviewContext from "../context/ReviewContext";
 
 function Summary() {
-  const reviews = useContext(ReviewContext);
+  const { reviews } = useContext(ReviewContext);
   const average =
     reviews.reduce((acc, cur) => {
       return acc + cur.rating;

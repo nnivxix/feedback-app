@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "./shared/Button";
 import FormRating from "./InputRating";
-import { Review } from "../types/schema";
+import ReviewContext from "../context/ReviewContext";
 
-interface ReviewFormProps {
-  product: string;
-  id: number;
-  handleAdd: (review: Review) => void;
-}
-function ReviewForm({ product, id, handleAdd }: ReviewFormProps) {
+function ReviewForm() {
+  const { reviews, addReview } = useContext(ReviewContext);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -34,11 +30,11 @@ function ReviewForm({ product, id, handleAdd }: ReviewFormProps) {
     e.preventDefault();
     if (review.trim().length > 10) {
       const newReview = {
-        id: id,
+        id: reviews.length + 1,
         text: review,
         rating,
       };
-      handleAdd(newReview);
+      addReview(newReview);
       setReview("");
       setRating(5);
     }
@@ -46,7 +42,7 @@ function ReviewForm({ product, id, handleAdd }: ReviewFormProps) {
 
   return (
     <div>
-      <h1>How about your experience with the {product}</h1>
+      <h1>How about your experience with our restaurant</h1>
       <form className="form-container" onSubmit={submitForm}>
         <p>Please rate our restaurant</p>
         <FormRating select={(rating) => setRating(rating)} />
