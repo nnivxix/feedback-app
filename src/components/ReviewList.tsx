@@ -1,13 +1,15 @@
+import { useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ReviewCard from "./ReviewCard";
 import { Review } from "../types/schema";
+import ReviewContext from "../context/ReviewContext";
 
 interface ReviewListProps {
-  reviews: Review[];
   handleDelete: (id: number) => void;
 }
 
-function ReviewList({ reviews, handleDelete }: ReviewListProps) {
+function ReviewList({ handleDelete }: ReviewListProps) {
+  const reviews = useContext(ReviewContext);
   if (!reviews.length) {
     return <p style={{ textAlign: "center" }}>No rating yet!</p>;
   }

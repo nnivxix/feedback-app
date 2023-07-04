@@ -1,18 +1,14 @@
 import { createContext, useState, ReactNode } from "react";
+import { Review } from "../types/schema";
+import dataReviews from "../data/reviews";
 
-const ReviewContext = createContext({});
+const ReviewContext = createContext<Review[]>([]);
 
 export const ReviewProvider = ({ children }: { children: ReactNode }) => {
-  const [review, setReview] = useState([
-    {
-      id: 1,
-      text: "this is from provider",
-      rating: 5,
-    },
-  ]);
+  const [reviews] = useState(dataReviews);
   return (
-    <ReviewContext.Provider value={{ review }}>
-      {children}
-    </ReviewContext.Provider>
+    <ReviewContext.Provider value={reviews}>{children}</ReviewContext.Provider>
   );
 };
+
+export default ReviewContext;

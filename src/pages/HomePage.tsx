@@ -29,8 +29,8 @@ function HomePage() {
         product="Spesial Martabak Telor"
         handleAdd={addReview}
       />
-      <Summary reviews={reviews} />
-      <ReviewList reviews={reviews} handleDelete={deleteReview} />
+      <Summary />
+      <ReviewList handleDelete={deleteReview} />
       <Link to={"/about"} className="about-link">
         <FaQuestion size={20} />
       </Link>

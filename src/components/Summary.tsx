@@ -1,11 +1,9 @@
+import { useContext } from "react";
 import { FaStar } from "react-icons/fa";
-import { Review } from "../types/schema";
+import ReviewContext from "../context/ReviewContext";
 
-interface SummaryProps {
-  reviews: Review[];
-}
-
-function Summary({ reviews }: SummaryProps) {
+function Summary() {
+  const reviews = useContext(ReviewContext);
   const average =
     reviews.reduce((acc, cur) => {
       return acc + cur.rating;
