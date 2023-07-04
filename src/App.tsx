@@ -3,10 +3,10 @@ import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import PostPage from "./pages/PostPage";
-
+import { ReviewProvider } from "./context/ReviewContext";
 function App() {
   return (
-    <main>
+    <ReviewProvider>
       <Router>
         <Header title="Feedback App" version={1.2} />
         <Routes>
@@ -15,7 +15,7 @@ function App() {
           <Route path="/post/*" element={<PostPage />}></Route>
         </Routes>
       </Router>
-    </main>
+    </ReviewProvider>
   );
 }
 
