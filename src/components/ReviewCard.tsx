@@ -5,9 +5,9 @@ import { Review } from "../types/schema";
 interface ReviewCardProps {
   Review: Review;
   deleteReview: (id: number) => void;
-  updateReview: (review: Review) => void;
+  editReview: (review: Review) => void;
 }
-function ReviewCard({ Review, deleteReview, updateReview }: ReviewCardProps) {
+function ReviewCard({ Review, deleteReview, editReview }: ReviewCardProps) {
   return (
     <Card cool={false}>
       <div
@@ -28,7 +28,12 @@ function ReviewCard({ Review, deleteReview, updateReview }: ReviewCardProps) {
           <button onClick={() => deleteReview(Review.id)}>
             <FaTrash />
           </button>
-          <button onClick={() => updateReview(Review)}>
+          <button
+            onClick={() => {
+              editReview(Review);
+              window.location.href = "#review";
+            }}
+          >
             <FaPencilAlt />
           </button>
         </div>

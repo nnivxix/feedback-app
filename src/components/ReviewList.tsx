@@ -29,7 +29,7 @@ function ReviewList() {
               key={review.id}
               Review={review}
               deleteReview={deleteReview}
-              updateReview={editReview}
+              editReview={editReview}
             />
           </motion.div>
         ))}
