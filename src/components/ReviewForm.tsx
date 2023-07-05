@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Button from "./shared/Button";
-import FormRating from "./InputRating";
+import InputRating from "./InputRating";
 import ReviewContext from "../context/ReviewContext";
 import { Review } from "../types/schema";
 
@@ -59,11 +59,11 @@ function ReviewForm() {
   }, [reviewEdit]);
 
   return (
-    <div>
+    <div className="review-form">
       <h1>How about your experience with our restaurant</h1>
       <form className="form-container" onSubmit={submitForm}>
         <p>Please rate our restaurant</p>
-        <FormRating select={(rating) => setRating(rating)} />
+        <InputRating select={(rating) => setRating(rating)} />
         <div className="wrap-form">
           <label htmlFor="review">Review</label>
           <textarea

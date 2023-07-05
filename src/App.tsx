@@ -8,7 +8,7 @@ function App() {
   return (
     <ReviewProvider>
       <Router>
-        <Header title="Feedback App" version={1.2} />
+        <Header title="Feedback App" />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/about" element={<AboutPage />}></Route>

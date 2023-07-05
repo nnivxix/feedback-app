@@ -5,6 +5,7 @@ function AboutPage() {
     <Card cool={false}>
       <div>
         <h1>About Feedback App</h1>
+        <p>version 0.1</p>
         <Link to={"/"}>back to home</Link>
       </div>
     </Card>

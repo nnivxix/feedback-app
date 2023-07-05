@@ -1,12 +1,19 @@
+html {
+
+  scroll-behavior: smooth !important;
+}
 body {
   background: #2B2730;
   font-family: Arial, Helvetica, sans-serif;
   color: aliceblue;
 }
 
-.header{
-  text-decoration: underline;
+header{
   cursor: pointer;
+  text-align: center;
+  color:#BE5A83 ;
+  padding: 2px 0px;
+  background-color: #0E2954;
 }
 
 .header:hover {
@@ -20,6 +27,7 @@ body {
   margin: 4px 0px;
   cursor: pointer;
   position: relative;
+  border-radius: 0.25rem;
   /* text-align: center; */
 }
 .review-card:hover{
@@ -27,6 +35,12 @@ body {
 }
 .review-card p {
   font-size: 24px;
+}
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px;
 }
 .aqua {
   background-color: aquamarine;
@@ -52,8 +66,10 @@ body {
   padding: 3px 0;
 }
 .wrap-form textarea {
-  font-size: 18px;
+  font-size: 16px;
   padding: 5px;
+  height: 100px;
+  border-radius: 0.25rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .wrap-form select {
@@ -145,6 +161,7 @@ body {
   color: wheat;
 }
 .ul-link li a {
+  padding: 14px 18px;
   color: wheat;
   text-decoration: none;
 }
@@ -152,3 +169,73 @@ body {
 .ul-link li a.active {
   text-decoration: underline;
 }
+
+@media (min-width: 768px) { 
+  .nav-link .ul-link li {
+    font-size: 24px;
+
+  }
+  .foto-product{
+    padding: 10px 0;
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+  }
+  .nav-link {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .review-form{
+    width: 50%;
+    margin: 0 auto;
+    scroll-behavior: smooth;
+  }
+  .review-form h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+  .review-form p {
+    font-size: 24px;
+    text-align: center;
+  }
+  .review-form button {
+    padding: 8px 18px ;
+    font-size: 24px;
+  }
+  .wrap-form textarea {
+    border-radius: 0.5rem;
+  }
+  .wrap-form label, .wrap-form button, .wrap-form textarea {
+    font-size: 20px;
+  }
+  #review {
+    height: 100px;
+  }
+  .container-rating  {
+   width: 80px;
+   height: 80px;
+  }
+  .container-rating label {
+   font-size: 30px;
+   width: 100%;
+  }
+  .review-card {
+    width: 50%;
+    margin: 10px auto;
+    border-radius: 0.5rem;
+    padding: 20px;
+  }
+
+  .button-action{
+    width: 40px;
+    height: 40px;
+  }
+
+  .summary {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .summary p {
+    font-size: 20px;
+  } 
+ }

@@ -10,14 +10,7 @@ interface ReviewCardProps {
 function ReviewCard({ Review, deleteReview, editReview }: ReviewCardProps) {
   return (
     <Card cool={false}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "2px 6px",
-        }}
-      >
+      <div className="card-container">
         <h1>
           <span>
             <FaStar color="orange" />
@@ -25,10 +18,14 @@ function ReviewCard({ Review, deleteReview, editReview }: ReviewCardProps) {
           {" " + Review.rating}
         </h1>
         <div>
-          <button onClick={() => deleteReview(Review.id)}>
+          <button
+            className="button-action"
+            onClick={() => deleteReview(Review.id)}
+          >
             <FaTrash />
           </button>
           <button
+            className="button-action"
             onClick={() => {
               editReview(Review);
               window.location.href = "#review";
