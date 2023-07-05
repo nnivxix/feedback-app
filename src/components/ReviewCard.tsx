@@ -1,12 +1,13 @@
-import { FaTrash, FaStar } from "react-icons/fa";
+import { FaTrash, FaStar, FaPencilAlt } from "react-icons/fa";
 import Card from "./shared/Card";
 import { Review } from "../types/schema";
 
 interface ReviewCardProps {
   Review: Review;
   deleteReview: (id: number) => void;
+  updateReview: (review: Review) => void;
 }
-function ReviewCard({ Review, deleteReview }: ReviewCardProps) {
+function ReviewCard({ Review, deleteReview, updateReview }: ReviewCardProps) {
   return (
     <Card cool={false}>
       <div
@@ -23,9 +24,14 @@ function ReviewCard({ Review, deleteReview }: ReviewCardProps) {
           </span>
           {" " + Review.rating}
         </h1>
-        <button onClick={() => deleteReview(Review.id)}>
-          <FaTrash />
-        </button>
+        <div>
+          <button onClick={() => deleteReview(Review.id)}>
+            <FaTrash />
+          </button>
+          <button onClick={() => updateReview(Review)}>
+            <FaPencilAlt />
+          </button>
+        </div>
       </div>
       <p>{Review.text}</p>
     </Card>
