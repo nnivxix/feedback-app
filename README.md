@@ -2,4 +2,4 @@
 
 ## Shot
 
-![dribble shot 1](./gh-assets/db_shots_1.png)
+![dribble shot v.0.1](./gh-assets/db_shots_1.png)
