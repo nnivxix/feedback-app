@@ -7,12 +7,17 @@ interface ReviewContextProps {
   reviewEdit: ReviewEditProps;
   deleteReview: (id: number) => void;
   addReview: (review: Review) => void;
-  updateReview: (review: Review) => void;
+  editReview: (review: Review) => void;
+  updateReview: ({ id, review }: UpdateReviewProps) => void;
 }
 
 interface ReviewEditProps {
   review?: Review;
   isEdit: boolean;
+}
+interface UpdateReviewProps {
+  id: number;
+  review: { rating: number; text: string };
 }
 
 const ReviewContext = createContext<ReviewContextProps>({
@@ -27,6 +32,7 @@ const ReviewContext = createContext<ReviewContextProps>({
   },
   deleteReview: () => null,
   addReview: () => null,
+  editReview: () => null,
   updateReview: () => null,
 });
 
@@ -47,16 +53,30 @@ export const ReviewProvider = ({ children }: { children: ReactNode }) => {
   const addReview = (review: Review) => {
     setReview([review, ...reviews]);
   };
-  const updateReview = (review: Review) => {
+  const editReview = (review: Review) => {
     setReviewEdit({
       review,
       isEdit: true,
     });
   };
+  const updateReview = ({ id, review }: UpdateReviewProps) => {
+    setReview(
+      reviews.map((item) => {
+        return item.id === id ? { ...item, ...review } : item;
+      })
+    );
+  };
 
   return (
     <ReviewContext.Provider
-      value={{ reviews, reviewEdit, deleteReview, addReview, updateReview }}
+      value={{
+        reviews,
+        reviewEdit,
+        deleteReview,
+        addReview,
+        editReview,
+        updateReview,
+      }}
     >
       {children}
     </ReviewContext.Provider>

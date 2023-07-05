@@ -2,9 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import Button from "./shared/Button";
 import FormRating from "./InputRating";
 import ReviewContext from "../context/ReviewContext";
+import { Review } from "../types/schema";
 
 function ReviewForm() {
-  const { reviews, addReview, reviewEdit } = useContext(ReviewContext);
+  const { reviews, addReview, reviewEdit, updateReview } =
+    useContext(ReviewContext);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -29,14 +31,22 @@ function ReviewForm() {
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (review.trim().length > 10) {
-      const newReview = {
-        id: reviews.length + 1,
+      const newReview: { id?: number; text: string; rating: number } = {
         text: review,
         rating,
       };
-      addReview(newReview);
+      if (reviewEdit.isEdit) {
+        updateReview({
+          id: reviewEdit.review?.id as number,
+          review: newReview,
+        });
+        setReview("");
+
+        return;
+      }
+      newReview.id = (reviews.length + 1) as number;
+      addReview(newReview as Review);
       setReview("");
-      setRating(5);
     }
   };
 

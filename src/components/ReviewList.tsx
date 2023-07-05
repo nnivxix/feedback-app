@@ -5,7 +5,7 @@ import { Review } from "../types/schema";
 import ReviewContext from "../context/ReviewContext";
 
 function ReviewList() {
-  const { reviews, deleteReview, updateReview } = useContext(ReviewContext);
+  const { reviews, deleteReview, editReview } = useContext(ReviewContext);
   if (!reviews.length) {
     return <p style={{ textAlign: "center" }}>No rating yet!</p>;
   }
@@ -29,7 +29,7 @@ function ReviewList() {
               key={review.id}
               Review={review}
               deleteReview={deleteReview}
-              updateReview={updateReview}
+              updateReview={editReview}
             />
           </motion.div>
         ))}
