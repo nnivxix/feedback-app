@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import ReviewContext from "../context/ReviewContext";
 
 interface FormRatingProps {
   select: (id: number) => void;
@@ -6,10 +7,16 @@ interface FormRatingProps {
 
 function FormRating({ select }: FormRatingProps) {
   const [selected, setSelected] = useState(5);
+  const { reviewEdit } = useContext(ReviewContext);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelected(+e.currentTarget.value);
     select(+e.currentTarget.value);
   };
+
+  useEffect(() => {
+    setSelected(reviewEdit.review?.rating as number);
+  }, [reviewEdit]);
 
   return (
     <div className="input-radio">

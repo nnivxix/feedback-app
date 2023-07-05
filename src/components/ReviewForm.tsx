@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Button from "./shared/Button";
 import FormRating from "./InputRating";
 import ReviewContext from "../context/ReviewContext";
 
 function ReviewForm() {
-  const { reviews, addReview } = useContext(ReviewContext);
+  const { reviews, addReview, reviewEdit } = useContext(ReviewContext);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -39,6 +39,14 @@ function ReviewForm() {
       setRating(5);
     }
   };
+
+  useEffect(() => {
+    if (reviewEdit.isEdit) {
+      setRating(reviewEdit.review?.rating as number);
+      setReview(reviewEdit.review?.text as string);
+      setBtnDisabled(false);
+    }
+  }, [reviewEdit]);
 
   return (
     <div>

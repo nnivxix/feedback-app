@@ -4,18 +4,27 @@ import dataReviews from "../data/reviews";
 
 interface ReviewContextProps {
   reviews: Review[];
+  reviewEdit: ReviewEditProps;
   deleteReview: (id: number) => void;
   addReview: (review: Review) => void;
   updateReview: (review: Review) => void;
 }
 
-interface EditReviewProps {
+interface ReviewEditProps {
   review?: Review;
   isEdit: boolean;
 }
 
 const ReviewContext = createContext<ReviewContextProps>({
   reviews: [],
+  reviewEdit: {
+    review: {
+      id: 0,
+      text: "",
+      rating: 0,
+    },
+    isEdit: false,
+  },
   deleteReview: () => null,
   addReview: () => null,
   updateReview: () => null,
@@ -23,7 +32,7 @@ const ReviewContext = createContext<ReviewContextProps>({
 
 export const ReviewProvider = ({ children }: { children: ReactNode }) => {
   const [reviews, setReview] = useState<Review[]>(dataReviews);
-  const [editReview, setEditReview] = useState<EditReviewProps>({
+  const [reviewEdit, setReviewEdit] = useState<ReviewEditProps>({
     review: {
       id: 0,
       text: "",
@@ -39,7 +48,7 @@ export const ReviewProvider = ({ children }: { children: ReactNode }) => {
     setReview([review, ...reviews]);
   };
   const updateReview = (review: Review) => {
-    setEditReview({
+    setReviewEdit({
       review,
       isEdit: true,
     });
@@ -47,7 +56,7 @@ export const ReviewProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ReviewContext.Provider
-      value={{ reviews, deleteReview, addReview, updateReview }}
+      value={{ reviews, reviewEdit, deleteReview, addReview, updateReview }}
     >
       {children}
     </ReviewContext.Provider>
