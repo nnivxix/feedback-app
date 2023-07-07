@@ -44,7 +44,6 @@ function ReviewForm() {
 
         return;
       }
-      newReview.id = (reviews.length + 1) as number;
       addReview(newReview as Review);
       setReview("");
     }
