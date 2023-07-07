@@ -1,9 +1,9 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import { Review } from "../types/schema";
-import dataReviews from "../data/reviews";
 
 interface ReviewContextProps {
   reviews: Review[];
+  isLoading: boolean;
   reviewEdit: ReviewEditProps;
   deleteReview: (id: number) => void;
   addReview: (review: Review) => void;
@@ -22,6 +22,7 @@ interface UpdateReviewProps {
 
 const ReviewContext = createContext<ReviewContextProps>({
   reviews: [],
+  isLoading: false,
   reviewEdit: {
     review: {
       id: 0,
@@ -37,7 +38,8 @@ const ReviewContext = createContext<ReviewContextProps>({
 });
 
 export const ReviewProvider = ({ children }: { children: ReactNode }) => {
-  const [reviews, setReview] = useState<Review[]>(dataReviews);
+  const [reviews, setReview] = useState<Review[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [reviewEdit, setReviewEdit] = useState<ReviewEditProps>({
     review: {
       id: 0,
@@ -46,6 +48,18 @@ export const ReviewProvider = ({ children }: { children: ReactNode }) => {
     },
     isEdit: false,
   });
+
+  useEffect(() => {
+    getReviews();
+  }, []);
+
+  async function getReviews() {
+    const request = await fetch(import.meta.env.VITE_API_URL);
+    const respons = await request.json();
+
+    setReview(respons);
+    setIsLoading(false);
+  }
 
   const deleteReview = (id: number) => {
     setReview(reviews.filter((review) => review.id !== id));
@@ -71,6 +85,7 @@ export const ReviewProvider = ({ children }: { children: ReactNode }) => {
     <ReviewContext.Provider
       value={{
         reviews,
+        isLoading,
         reviewEdit,
         deleteReview,
         addReview,
