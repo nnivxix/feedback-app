@@ -3,13 +3,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import ReviewCard from "./ReviewCard";
 import { Review } from "../types/schema";
 import ReviewContext from "../context/ReviewContext";
+import Spinner from "./shared/Spinner";
 
 function ReviewList() {
-  const { reviews, deleteReview, editReview } = useContext(ReviewContext);
-  if (!reviews.length) {
+  const { reviews, deleteReview, editReview, isLoading } =
+    useContext(ReviewContext);
+  if (!isLoading && !reviews.length) {
     return <p style={{ textAlign: "center" }}>No rating yet!</p>;
   }
-  return (
+
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div>
       <AnimatePresence>
         {reviews.map((review: Review) => (
