@@ -26,9 +26,9 @@
       "text": "Produk ini memiliki kualitas yang baik dengan harga yang terjangkau. Saya merekomendasikannya."
     },
     {
-      "id": 6,
-      "rating": 1,
-      "text": "Pengiriman sangat buruk. Sudah menunggu lama tapi barang tidak kunjung sampai."
+      "text": "Pengiriman sangat buruk. Sudah menunggu lama tapi barang tidak kunjung sampai. \nok lah",
+      "rating": 5,
+      "id": 6
     },
     {
       "rating": 4,

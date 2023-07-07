@@ -85,13 +85,23 @@ export const ReviewProvider = ({ children }: { children: ReactNode }) => {
       isEdit: true,
     });
   };
-  const updateReview = ({ id, review }: UpdateReviewProps) => {
+  async function updateReview({ id, review }: UpdateReviewProps) {
+    const request = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    });
+
+    const respons = await request.json();
+
     setReview(
       reviews.map((item) => {
-        return item.id === id ? { ...item, ...review } : item;
+        return item.id === id ? { ...item, ...respons } : item;
       })
     );
-  };
+  }
 
   return (
     <ReviewContext.Provider
