@@ -5,8 +5,7 @@ import ReviewContext from "../context/ReviewContext";
 import { Review } from "../types/schema";
 
 function ReviewForm() {
-  const { reviews, addReview, reviewEdit, updateReview } =
-    useContext(ReviewContext);
+  const { addReview, reviewEdit, updateReview } = useContext(ReviewContext);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(5);
   const [btnDisabled, setBtnDisabled] = useState(true);

@@ -61,9 +61,12 @@ export const ReviewProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(false);
   }
 
-  const deleteReview = (id: number) => {
+  async function deleteReview(id: number) {
+    await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      method: "DELETE",
+    });
     setReview(reviews.filter((review) => review.id !== id));
-  };
+  }
   async function addReview(review: Review) {
     const request = await fetch(`${import.meta.env.VITE_API_URL}`, {
       method: "POST",
